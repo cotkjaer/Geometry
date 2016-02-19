@@ -11,6 +11,16 @@ import XCTest
 
 class GeometryTests: XCTestCase {
     
+    func test_CGFloat_epsilon()
+    {
+        XCTAssertGreaterThan(CGFloat.epsilon, 0)
+        
+        let one = CGFloat(1)
+        
+        XCTAssertGreaterThan(one + CGFloat.epsilon, one)
+        XCTAssert(one + CGFloat.epsilon * 0.5 == one)
+    }
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
