@@ -87,7 +87,6 @@ public extension CGPoint
         }
     }
     
-    
     /**
      Minimum distance between line segment and `self`
      - parameter ls: line-segment tuple

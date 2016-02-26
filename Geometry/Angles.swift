@@ -43,18 +43,6 @@ public func normalizeAngle<F:FloatingPointArithmeticType>(φ : F, _ Φ: F = F.π
     return φ - F.π2 * ((φ + F.π - Φ) / F.π2).floor
 }
 
-//extension FloatingPointArithmeticType
-//{
-//    /// normalized value, as an angle between 0 and 2π
-//    public var asNormalizedAngle : Self { return normalizeAngle(self) }
-//    
-//    /// Normalizes self to be in ]-π;π]
-//    public var normalizedRadians: Self
-//        {
-//            return self - (self / Self.π2 - Self(0.5)).ceil * Self.π2
-//    }
-//}
-
 /// Normalizes angle to be in ]-π;π]
 public func normalizeRadians<F:FloatingPointArithmeticType>(φ: F) -> F
 {

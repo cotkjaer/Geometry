@@ -111,22 +111,11 @@ public extension CGVector
     public func rotated(theta:CGFloat) -> CGVector
     {
         return with(direction: direction + theta)
-//        let sinTheta = sin(theta)
-//        let cosTheta = cos(theta)
-//        
-//        return CGVector(magnitude: magnitude, direction: direction + theta)
-//        dx = (dx * cosTheta - dy * sinTheta)
-//        dy = (dx * sinTheta + dy * cosTheta)
     }
     
     public mutating func rotate(theta: CGFloat)
     {
         self = rotated(theta)
-//        let sinTheta = sin(theta)
-//        let cosTheta = cos(theta)
-//        
-//        dx = (dx * cosTheta - dy * sinTheta)
-//        dy = (dx * sinTheta + dy * cosTheta)
     }
     
     /// 90 degrees counterclockwise rotation

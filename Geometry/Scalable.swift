@@ -11,8 +11,6 @@ import Arithmetic
 public protocol ScalableShape: Shape, Addable
 {
     func scaled(factor : NumberType) -> Self
-    
-//    func * (lhs: Self, rhs: NumberType) -> Self
 }
 
 public func lerp <F: ScalableShape> (lower: F, _ upper: F, _ factor: F.NumberType) -> F
