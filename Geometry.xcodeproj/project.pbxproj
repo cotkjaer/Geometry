@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F57EF291C769229008420F0 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 8F57EF281C769229008420F0 /* Cartfile.private */; };
+		8F57EF291C769229008420F0 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 8F57EF281C769229008420F0 /* Cartfile */; };
 		8F57EF2B1C7693E5008420F0 /* Arithmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F57EF2A1C7693E5008420F0 /* Arithmetic.framework */; };
 		8F91BA381C84451E004CBDB9 /* TwoDimensionalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F91BA371C84451E004CBDB9 /* TwoDimensionalValue.swift */; };
 		8F91BA401C8450F6004CBDB9 /* MultiDimensionalValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F91BA3F1C8450F6004CBDB9 /* MultiDimensionalValueTests.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8F57EF281C769229008420F0 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
+		8F57EF281C769229008420F0 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		8F57EF2A1C7693E5008420F0 /* Arithmetic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Arithmetic.framework; path = Carthage/Build/iOS/Arithmetic.framework; sourceTree = "<group>"; };
 		8F91BA371C84451E004CBDB9 /* TwoDimensionalValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoDimensionalValue.swift; sourceTree = "<group>"; };
 		8F91BA3F1C8450F6004CBDB9 /* MultiDimensionalValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiDimensionalValueTests.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				8F57EF2A1C7693E5008420F0 /* Arithmetic.framework */,
-				8F57EF281C769229008420F0 /* Cartfile.private */,
+				8F57EF281C769229008420F0 /* Cartfile */,
 				8FA7F0DB1C767439001A8DE9 /* Geometry */,
 				8FA7F0E71C767439001A8DE9 /* GeometryTests */,
 				8FA7F0DA1C767439001A8DE9 /* Products */,
@@ -212,7 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F57EF291C769229008420F0 /* Cartfile.private in Resources */,
+				8F57EF291C769229008420F0 /* Cartfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
