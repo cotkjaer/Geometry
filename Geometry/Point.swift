@@ -14,16 +14,12 @@ public protocol Point2D : TwoDimensionalValue
     var y : Scalar { get set }
     
     init(x: Scalar, y: Scalar)
-    
-    func distance<P:Point2D where P.Scalar == Scalar>(point: P) -> Scalar
 }
 
 // MARK: - Defaults
 
 extension Point2D
 {
-    public var dimensions : Int { return 2 }
-    
     init(x: Scalar, y: Scalar)
     {
         self.init()
@@ -214,13 +210,11 @@ extension Point2D
         y = center.y + translatedY
     }
     
-    /// angle is in radians
     public func rotated(theta:Scalar, around center:Self) -> Self
     {
         return (self - center).rotated(theta) + center
     }
     
-    /// angle is in radians
     public func rotated(theta:Scalar) -> Self
     {
         let sinTheta = sin(theta)
@@ -229,10 +223,10 @@ extension Point2D
         return Self(x: x * cosTheta - y * sinTheta, y: x * sinTheta + y * cosTheta)
     }
     
-//    public func angleToPoint(point: Self) -> Scalar
-//    {
-//        return atan2(point.y - y, point.x - x)
-//    }
+    public func angleToPoint(point: Self) -> Scalar
+    {
+        return atan2(point.y - y, point.x - x)
+    }
 }
 
 public func rotate<P:Point2D>(point p1:P, radians: P.Scalar, around rhs:P) -> P

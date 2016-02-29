@@ -23,13 +23,17 @@ public protocol MultiDimensionalValue: Addable, Subtractable, Equatable, Collect
     func / (_: Self, _: Scalar) -> Self
     func /= (inout _: Self, _: Scalar)
     
-//    func + <M: MultiDimensionalValue where M.Scalar == Scalar>(_: Self, _: M) -> Self
     func += <M: MultiDimensionalValue where M.Scalar == Scalar>(inout _: Self, _: M)
     
-//    func - <M: MultiDimensionalValue where M.Scalar == Scalar>(_: Self, _: M) -> Self
     func -= <M: MultiDimensionalValue where M.Scalar == Scalar>(inout _: Self, _: M)
     
     init(_ : Scalar...)
+    
+    init(scalars: [Scalar])
+    
+    // MARK: map
+    
+    func map(transform: Scalar -> Scalar) -> Self
 }
 
 // MARK: - Defaults
@@ -40,6 +44,11 @@ extension MultiDimensionalValue
     public var endIndex: Int { return dimensions }
     
     public init(_ scalars: Scalar...)
+    {
+        self.init(scalars: scalars)
+    }
+    
+    public init(scalars: [Scalar])
     {
         self.init()
         
@@ -96,6 +105,11 @@ public prefix func + <F: MultiDimensionalValue> (lhs: F) -> F
     return lhs
 }
 
+public func + <M: MultiDimensionalValue>(lhs: M, rhs: M) -> M
+{
+    return M(scalars: (lhs.startIndex..<lhs.endIndex).map({lhs[$0] + rhs[$0]}))
+}
+
 public func + <M1: MultiDimensionalValue, M2: MultiDimensionalValue where M1.Scalar == M2.Scalar>(lhs: M1, rhs: M2) -> M1
 {
     var r = lhs
@@ -106,6 +120,20 @@ public func + <M1: MultiDimensionalValue, M2: MultiDimensionalValue where M1.Sca
     }
     
     return r
+}
+
+public func + <M1: MultiDimensionalValue, M2: MultiDimensionalValue where M1.Scalar == M2.Scalar>(lhs: M1, rhs: M2?) -> M1
+{
+    guard let rhs = rhs else { return lhs }
+
+    return lhs + rhs
+}
+
+public func + <M1: MultiDimensionalValue, M2: MultiDimensionalValue where M1.Scalar == M2.Scalar>(lhs: M1?, rhs: M2) -> M1
+{
+    let lhs = lhs ?? M1()
+
+    return lhs + rhs
 }
 
 public func += <M1: MultiDimensionalValue, M2: MultiDimensionalValue where M1.Scalar == M2.Scalar>(inout lhs: M1, rhs: M2)

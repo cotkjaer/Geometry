@@ -8,8 +8,10 @@
 
 import Arithmetic
 
-// MARK: - Sin, Cos
+// MARK: - Sinus
 
+///Sine function
+@warn_unused_result
 public func sin<F: FloatingPointArithmeticType>(f: F) -> F
 {
     if let d = f as? Double, let s = sin(d) as? F
@@ -28,6 +30,10 @@ public func sin<F: FloatingPointArithmeticType>(f: F) -> F
     fatalError("cannot get sin for \(f.dynamicType)")
 }
 
+// MARK: - Cosinus
+
+///Cosine function
+@warn_unused_result
 public func cos<F: FloatingPointArithmeticType>(f: F) -> F
 {
     if let d = f as? Double, let s = cos(d) as? F
@@ -46,6 +52,57 @@ public func cos<F: FloatingPointArithmeticType>(f: F) -> F
     fatalError("cannot get cos for \(f.dynamicType)")
 }
 
+// MARK: - Tangent
+
+///Tangent function
+@warn_unused_result
+public func tan<F: FloatingPointArithmeticType>(f: F) -> F
+{
+    if let d = f as? Double, let s = tan(d) as? F
+    {
+        return s
+    }
+    if let d = f as? Float, let s = tanf(d) as? F
+    {
+        return s
+    }
+    if let d = f as? CGFloat, let s = tan(d) as? F
+    {
+        return s
+    }
+    
+    fatalError("cannot get tan for \(f.dynamicType)")
+}
+
+///Arc tangent function of two variables
+@warn_unused_result
+public func atan2<F: FloatingPointArithmeticType>(x: F, _ y:F) -> F
+{
+    if let x = x as? Double, let y = y as? Double, let r = atan2(x,y) as? F
+    {
+        return r
+    }
+
+    if let x = x as? Float, let y = y as? Float, let r = atan2f(x,y) as? F
+    {
+        return r
+    }
+    
+    if let x = x as? CGFloat, let y = y as? CGFloat, let r = atan2(x,y) as? F
+    {
+        return r
+    }
+    
+    fatalError("cannot get tan for \(x.dynamicType)")
+}
+
+///Arc tangent function of two-dimensional value
+/// - returns : atan2(p.y, p.x) - value in range ]-π;π]
+@warn_unused_result
+public func atan2<P: TwoDimensionalValue>(p: P) -> P.Scalar
+{
+    return atan2(p[1], p[0])
+}
 
 // MARK: - Normalize
 
@@ -58,17 +115,17 @@ Normalize an angle in a 2π wide interval around a center value.
 - Note: This method has three main uses:
 1. normalize an angle between 0 and 2π
 ```swift
-let a = CGFloat.normalizeAngle(a, π)
+let a = normalizeAngle(a, π)
 ```
 
 2. normalize an angle between -π and +π
 ```swift
-let a = CGFloat.normalizeAngle(a, 0)
+let a = normalizeAngle(a, 0)
 ```
 
 3. compute the angle between two defining angular positions
 ```swift
-let angle = CGFloat.normalizeAngle(end, start) - start
+let angle = normalizeAngle(end, start) - start
 ```
 
 - Warning: Due to numerical accuracy and since π cannot be represented
@@ -84,16 +141,21 @@ public func normalizeAngle<F:FloatingPointArithmeticType>(φ : F, _ Φ: F = F.π
 }
 
 /// Normalizes angle to be in ]-π;π]
+@warn_unused_result
 public func normalizeRadians<F:FloatingPointArithmeticType>(φ: F) -> F
 {
     return φ - ( φ / F.π2 - 0.5 ).ceil * F.π2
 }
 
+/// Transform degrees to radians
+@warn_unused_result
 public func degrees2radians<F:FloatingPointArithmeticType>(degrees: F) -> F
 {
     return (degrees * F.π) / 180
 }
 
+/// Transform radians to degrees
+@warn_unused_result
 public func radians2degrees<F:FloatingPointArithmeticType>(radians: F) -> F
 {
     return (radians * 180) / F.π
