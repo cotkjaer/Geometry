@@ -8,13 +8,10 @@
 
 import Arithmetic
 
-
-public protocol Point2D : MultiDimensionValue
+public protocol Point2D : TwoDimensionalValue
 {
     var x : Scalar { get set }
     var y : Scalar { get set }
-    
-    init()
     
     init(x: Scalar, y: Scalar)
     
@@ -26,6 +23,14 @@ public protocol Point2D : MultiDimensionValue
 extension Point2D
 {
     public var dimensions : Int { return 2 }
+    
+    init(x: Scalar, y: Scalar)
+    {
+        self.init()
+        
+        self.x = x
+        self.y = y
+    }
     
     public subscript(index: Int) -> Scalar
         {
@@ -54,24 +59,6 @@ extension Point2D
 func == <P: Point2D>(lhs: P, rhs:P) -> Bool
 {
     return lhs.x == rhs.x && lhs.y == rhs.y
-}
-
-// MARK: - Default
-
-public extension Point2D
-{
-    init(x: Scalar, y: Scalar)
-    {
-        self.init()
-        
-        self.x = x
-        self.y = y
-    }
-    
-    func scaled(factor: Scalar) -> Self
-    {
-        return Self(x: x * factor, y: y * factor)
-    }
 }
 
 // MARK: - Operators
@@ -134,11 +121,6 @@ extension Point2D
     init(y: Scalar)
     {
         self.init(x:0, y:y)
-    }
-    
-    init<S: Size2D where S.Scalar == Scalar>(size: S)
-    {
-        self.init(x:size.width, y:size.height)
     }
     
     // MARK: map
@@ -225,8 +207,11 @@ extension Point2D
         let transposedX = x - center.x
         let transposedY = y - center.y
         
-        x = center.x + (transposedX * cosTheta - transposedY * sinTheta)
-        y = center.y + (transposedX * sinTheta + transposedY * cosTheta)
+        let translatedX = (transposedX * cosTheta - transposedY * sinTheta)
+        let translatedY = (transposedX * sinTheta + transposedY * cosTheta)
+
+        x = center.x + translatedX
+        y = center.y + translatedY
     }
     
     /// angle is in radians
@@ -252,16 +237,11 @@ extension Point2D
 
 public func rotate<P:Point2D>(point p1:P, radians: P.Scalar, around rhs:P) -> P
 {
-    let sinTheta = sin(radians)
-    let cosTheta = cos(radians)
+    var p = p1
     
-    let transposedX = p1.x - rhs.x
-    let transposedY = p1.y - rhs.y
+    p.rotate(radians, around: rhs)
     
-    let newX = rhs.x + (transposedX * cosTheta - transposedY * sinTheta)
-    let newY = rhs.y + (transposedX * sinTheta + transposedY * cosTheta)
-    
-    return P(x: newX, y: newY)
+    return p
 }
 
 public func isEqual<P:Point2D>(p1: P, rhs: P, withPrecision precision:P.Scalar) -> Bool
@@ -269,15 +249,7 @@ public func isEqual<P:Point2D>(p1: P, rhs: P, withPrecision precision:P.Scalar) 
     return p1.distanceTo(rhs) < abs(precision)
 }
 
-// MARK: - CGPoint
-
-extension CGPoint : Point2D
-{
-    public typealias Scalar = CGFloat
-}
-
 // MARK: - Distance
-
 
 public func distance<P:Point2D>(a: P, _ b: P) -> P.Scalar
 {
@@ -288,7 +260,6 @@ public func distanceSquared<P:Point2D>(a: P, _ b: P) -> P.Scalar
 {
     return pow(a.x - b.x, 2) + pow(a.y - b.y, 2)
 }
-
 
 // MARK: - Dot
 
@@ -309,8 +280,6 @@ public func dotProduct<P:Point2D>(a: P, _ b: P) -> P.Scalar
 {
     return a.x * b.x + a.y * b.y
 }
-
-
 
 // MARK: - Cross
 

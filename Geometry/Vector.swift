@@ -91,7 +91,8 @@ public struct Vector<Tail: VectorType> : VectorType
     public var scalar: Scalar
     public var tail: Tail
     
-    public subscript(i: Int) -> Scalar {
+    public subscript(i: Int) -> Scalar
+        {
         get { return i == 0 ? scalar : tail[i - 1] }
         set { if i == 0 { scalar = newValue } else { tail[i - 1] = newValue } }
     }

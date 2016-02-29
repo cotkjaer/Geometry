@@ -8,7 +8,6 @@
 
 import CoreGraphics
 
-
 // MARK: - CGVector
 
 public let CGVectorZero = CGVector(dx:0, dy:0)
