@@ -39,12 +39,12 @@ public extension CGPoint
     
     // MARK: with
     
-    func with(x  x: CGFloat) -> CGPoint
+    func with(x x: CGFloat) -> CGPoint
     {
         return CGPoint(x: x, y: y)
     }
     
-    func with(y  y: CGFloat) -> CGPoint
+    func with(y y: CGFloat) -> CGPoint
     {
         return CGPoint(x: x, y: y)
     }
@@ -139,7 +139,6 @@ public extension CGPoint
     }
 }
 
-
 public func rotate(point p1:CGPoint, radians: CGFloat, around p2:CGPoint) -> CGPoint
 {
     let sinTheta = sin(radians)
@@ -150,9 +149,7 @@ public func rotate(point p1:CGPoint, radians: CGFloat, around p2:CGPoint) -> CGP
     
     return CGPoint(x: p2.x + (transposedX * cosTheta - transposedY * sinTheta),
         y: p2.y + (transposedX * sinTheta + transposedY * cosTheta))
-    
 }
-
 
 public func isEqual(p1: CGPoint, p2: CGPoint, withPrecision precision:CGFloat) -> Bool
 {
@@ -322,73 +319,4 @@ public extension CGPoint
     var tuple: (CGFloat, CGFloat) { return (x, y) }
 }
 
-
-// MARK: - Trigonometry
-
-public func dotProduct(a: CGPoint, _ b: CGPoint) -> CGFloat
-{
-    return a.x * b.x + a.y * b.y
-}
-
-public func dot(a: CGPoint, _ b: CGPoint) -> CGFloat
-{
-    return a.x * b.x + a.y * b.y
-}
-
-public func · (a: CGPoint, _ b: CGPoint) -> CGFloat
-{
-    return a.x * b.x + a.y * b.y
-}
-
-public func distance(a: CGPoint, _ b: CGPoint) -> CGFloat
-{
-    return a.distanceTo(b)
-}
-
-public func distanceSquared(a: CGPoint, _ b: CGPoint) -> CGFloat
-{
-    return pow(a.x - b.x, 2) + pow(a.y - b.y, 2)
-}
-
-public func x(lhs: CGPoint, _ rhs: CGPoint) -> CGFloat
-{
-    return lhs.x * rhs.y - lhs.y * rhs.x
-}
-
-public func cross(lhs: CGPoint, _ rhs: CGPoint) -> CGFloat
-{
-    return lhs.x * rhs.y - lhs.y * rhs.x
-}
-
-public func crossProduct(lhs: CGPoint, _ rhs: CGPoint) -> CGFloat
-{
-    return lhs.x * rhs.y - lhs.y * rhs.x
-}
-
-// MARK: - Translate
-
-extension CGPoint
-{
-    public mutating func translate(dx: CGFloat? = nil, dy: CGFloat? = nil)
-    {
-        if let delta = dx
-        {
-            x += delta
-        }
-        
-        if let delta = dy
-        {
-            y += delta
-        }
-    }
-    
-    public func translated(dx: CGFloat? = nil, dy: CGFloat? = nil) -> CGPoint
-    {
-        var p = CGPoint(x: x, y: y)
-        
-        p.translate(dx, dy: dy)
-        
-        return p
-    }
-}
 

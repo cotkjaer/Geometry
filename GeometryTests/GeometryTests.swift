@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import Geometry
+import Arithmetic
 
 class GeometryTests: XCTestCase {
     

@@ -8,21 +8,21 @@
 
 import Arithmetic
 
-public protocol Size2D : ScalableShape
+public protocol Size2D : MultiDimensionValue
 {
-    var width : NumberType { get set }
-    var height : NumberType { get set }
+    var width : Scalar { get set }
+    var height : Scalar { get set }
     
     init()
     
-    init(width: NumberType, height: NumberType)
+    init(width: Scalar, height: Scalar)
 }
 
 // MARK: - Default
 
 public extension Size2D
 {
-    init(width: NumberType, height: NumberType)
+    init(width: Scalar, height: Scalar)
     {
         self.init()
         
@@ -30,7 +30,7 @@ public extension Size2D
         self.height = height
     }
     
-    func scaled(factor: NumberType) -> Self
+    func scaled(factor: Scalar) -> Self
     {
         return Self(width: width * factor, height: height * factor)
     }
@@ -40,5 +40,28 @@ public extension Size2D
 
 extension CGSize : Size2D
 {
-    public typealias NumberType = CGFloat
+    public var dimensions : Int { return 2 }
+    
+    public typealias Scalar = CGFloat
+    
+    public subscript(index: Int) -> Scalar
+        {
+        get {
+            switch index
+            {
+            case 0: return width
+            case 1: return height
+            default: fatalError("index \(index) out of bounds for CGSize")
+            }
+        }
+        set
+        {
+            switch index
+            {
+            case 0: width = newValue
+            case 1: height = newValue
+            default: fatalError("index \(index) out of bounds for CGSize")
+            }
+        }
+    }
 }

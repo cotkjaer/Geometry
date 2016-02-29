@@ -8,6 +8,45 @@
 
 import Arithmetic
 
+// MARK: - Sin, Cos
+
+public func sin<F: FloatingPointArithmeticType>(f: F) -> F
+{
+    if let d = f as? Double, let s = sin(d) as? F
+    {
+        return s
+    }
+    if let d = f as? Float, let s = sin(d) as? F
+    {
+        return s
+    }
+    if let d = f as? CGFloat, let s = sin(d) as? F
+    {
+        return s
+    }
+    
+    fatalError("cannot get sin for \(f.dynamicType)")
+}
+
+public func cos<F: FloatingPointArithmeticType>(f: F) -> F
+{
+    if let d = f as? Double, let s = cos(d) as? F
+    {
+        return s
+    }
+    if let d = f as? Float, let s = cosf(d) as? F
+    {
+        return s
+    }
+    if let d = f as? CGFloat, let s = cos(d) as? F
+    {
+        return s
+    }
+    
+    fatalError("cannot get cos for \(f.dynamicType)")
+}
+
+
 // MARK: - Normalize
 
 /**
@@ -40,7 +79,8 @@ as would be more satisfactory in a purely mathematical view.
 @warn_unused_result
 public func normalizeAngle<F:FloatingPointArithmeticType>(φ : F, _ Φ: F = F.π) -> F
 {
-    return φ - F.π2 * ((φ + F.π - Φ) / F.π2).floor
+    let a = ((φ + F.π - Φ) / F.π2).floor
+    return φ - F.π2 * a
 }
 
 /// Normalizes angle to be in ]-π;π]

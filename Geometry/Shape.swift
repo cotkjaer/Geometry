@@ -10,5 +10,5 @@ import Arithmetic
 
 public protocol Shape
 {
-    typealias NumberType : FloatingPointArithmeticType
+    typealias Scalar : FloatingPointArithmeticType
 }
