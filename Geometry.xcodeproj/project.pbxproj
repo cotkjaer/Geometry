@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F57EF291C769229008420F0 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 8F57EF281C769229008420F0 /* Cartfile */; };
 		8F57EF2B1C7693E5008420F0 /* Arithmetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F57EF2A1C7693E5008420F0 /* Arithmetic.framework */; };
+		8F8D90F11C846D0400142128 /* AnglesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D90F01C846D0400142128 /* AnglesTests.swift */; };
 		8F91BA381C84451E004CBDB9 /* TwoDimensionalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F91BA371C84451E004CBDB9 /* TwoDimensionalValue.swift */; };
 		8F91BA401C8450F6004CBDB9 /* MultiDimensionalValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F91BA3F1C8450F6004CBDB9 /* MultiDimensionalValueTests.swift */; };
 		8FA7F0DD1C767439001A8DE9 /* Geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA7F0DC1C767439001A8DE9 /* Geometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		8F57EF281C769229008420F0 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		8F57EF2A1C7693E5008420F0 /* Arithmetic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Arithmetic.framework; path = Carthage/Build/iOS/Arithmetic.framework; sourceTree = "<group>"; };
+		8F8D90F01C846D0400142128 /* AnglesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnglesTests.swift; sourceTree = "<group>"; };
 		8F91BA371C84451E004CBDB9 /* TwoDimensionalValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoDimensionalValue.swift; sourceTree = "<group>"; };
 		8F91BA3F1C8450F6004CBDB9 /* MultiDimensionalValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiDimensionalValueTests.swift; sourceTree = "<group>"; };
 		8FA7F0D91C767439001A8DE9 /* Geometry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Geometry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +119,7 @@
 				8FCE6BC31C80985D0079A587 /* VectorTests.swift */,
 				8F91BA3F1C8450F6004CBDB9 /* MultiDimensionalValueTests.swift */,
 				8FA7F0EA1C767439001A8DE9 /* Info.plist */,
+				8F8D90F01C846D0400142128 /* AnglesTests.swift */,
 			);
 			path = GeometryTests;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F91BA401C8450F6004CBDB9 /* MultiDimensionalValueTests.swift in Sources */,
+				8F8D90F11C846D0400142128 /* AnglesTests.swift in Sources */,
 				8FCE6BC41C80985D0079A587 /* VectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

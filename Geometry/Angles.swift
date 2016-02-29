@@ -160,3 +160,27 @@ public func radians2degrees<F:FloatingPointArithmeticType>(radians: F) -> F
 {
     return (radians * 180) / F.π
 }
+
+public extension FloatingPointArithmeticType
+{
+    /// Assumes `self` is in degrees
+    public var asRadians : Self { return (self * Self.π) / 180 }
+    
+    /// Assumes `self` is in radians
+    public var asDegrees : Self { return (self * 180) / Self.π }
+        
+    /// - note: Assumes `self` is in radians
+    /// Normalizes angle to be in ]φ-π;φ+π]
+    @warn_unused_result
+    func normalized(φ: Self = Self.π) -> Self
+    {
+        if φ == 0
+        {
+            /// Normalizes angle to be in ]-π;π]
+            return self - ( self / Self.π2 - 0.5 ).ceil * Self.π2
+        }
+        
+        let a = ((self + Self.π - φ) / Self.π2).floor
+        return self - Self.π2 * a
+    }
+}
