@@ -105,7 +105,7 @@ public func /= <P: Point2D> (inout p: P, divider: P.Scalar)
 
 // MARK: - Convenience
 
-extension Point2D
+public extension Point2D
 {
     // MARK: init
     
@@ -140,7 +140,7 @@ extension Point2D
     
     // MARK: distance
     
-    public func distance<P:Point2D where P.Scalar == Scalar>(point: P) -> Scalar
+    func distance<P:Point2D where P.Scalar == Scalar>(point: P) -> Scalar
     {
         return (pow(x - point.x, 2) + pow(y - point.y, 2)).squareroot
     }
